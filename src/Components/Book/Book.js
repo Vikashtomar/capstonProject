@@ -1,36 +1,52 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react'
 import axios from "axios"
+// import api_key from "../API/api"
+import "./Book.css"
 
 
-// URL  https://openlibrary.org/search.json?author=tolkien&sort=new
+
 function Book() {
-    const [books, setBooks] = useState([]);
 
-    
-    useEffect(() => {
-          axios.get("https://openlibrary.org/search.json?author=tolkien&sort=new")
-         .then((res) => {
-          setBooks(res.data.docs)
-         })
-         
-    
-    },[])
-    
+  const [books, setBooks] = useState([]);
 
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    try {
+      const response = await axios.get('https://openlibrary.org/search.json?author=tolkien&sort=new');
+      setBooks(response.data.docs);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
 
   return (
-<div>{
-  
-  books.map((book, index)=>{
-  return(  <div key = {index}>
-              <h3>{book.title}</h3>
-              <p>{book.author_name && book.author_name.join(', ')}</p>
-              {book.cover_i && (<img src={`https://covers.openlibrary.org/b/id${book.cover_i}-L.jpg`}  alt={book.title}
-                />)}
-              </div>)
-  })
-      
-              }
+    <div className='main'>
+      {books.map(book => {
+        console.log(book.author_name)
+        if (book.cover_i) {
+          return <div key={book.key}> 
+
+            <h3>{(book.title.length > 23) ? book.title.slice(0, 23) : book.title}</h3> 
+            <p>{(book.author_name[0].length > 15) ? book.author_name[0].slice(0, 15) : book.author_name[0]}</p>
+            {book.cover_i && (
+
+              <div className='imgbox'>
+                <img
+                  src={`https://covers.openlibrary.org/b/id/${book.cover_i}-L.jpg`}
+                  alt={book.title}
+                />
+              </div>
+
+            )}
+          </div>
+
+        }
+        return false
+      })}
+
     </div>
   );
 }
