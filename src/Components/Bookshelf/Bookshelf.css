@@ -1,0 +1,32 @@
+.bookshelf {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    max-width: 800px;
+    margin: 20px auto;
+  }
+  
+  .book {
+    width: 150px;
+    text-align: center;
+  }
+  
+  .book img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 5px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  }
+  
+  .book-title {
+    margin-top: 10px;
+    font-weight: bold;
+  }
+  
+  .book-author {
+    margin-top: 5px;
+    color: #777;
+  }
+  

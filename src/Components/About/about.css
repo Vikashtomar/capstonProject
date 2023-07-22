@@ -1,0 +1,15 @@
+.about-page {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .developers-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .developers-list li {
+    margin-bottom: 10px;
+  }
+  
