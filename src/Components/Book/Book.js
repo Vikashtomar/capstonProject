@@ -3,7 +3,6 @@ import axios from "axios"
 // import api_key from "../API/api"
 import "./Book.css"
 
-console.log("vikash")
 
 function Book() {
 
