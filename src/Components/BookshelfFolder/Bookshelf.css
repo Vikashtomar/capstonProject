@@ -1,4 +1,4 @@
-.bookshelf {
+/* .bookshelf {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -29,4 +29,23 @@
     margin-top: 5px;
     color: #777;
   }
-  
+   */
+
+
+
+   /* .bookshelf{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   }
+
+
+   .bookshelf h1{
+    display: flex;
+    font-size: 32px;
+   }
+   .bookshelf .imgbox {
+    width: 900px;
+    height: 400px;
+    margin-top: 40px;
+   } */

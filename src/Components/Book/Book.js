@@ -3,50 +3,48 @@ import axios from "axios"
 // import api_key from "../API/api"
 import "./Book.css"
 
-
+console.log("vikash")
 
 function Book() {
 
   const [books, setBooks] = useState([]);
 
-  useEffect(() => {
-    fetchData();
-  }, []);
+    useEffect(()=>{      
+      axios.get("http://localhost:8080/getAllbooks")
+      .then((result)=>{
+        console.log(result.data.status)
+        setBooks(result.data.allbooks)
 
-  const fetchData = async () => {
-    try {
-      const response = await axios.get('https://openlibrary.org/search.json?author=tolkien&sort=new');
-      setBooks(response.data.docs);
-    } catch (error) {
-      console.error('Error fetching data:', error);
-    }
-  };
-
+      })
+    },[])
+ 
+   
   return (
     <div className='main'>
-      {books.map(book => {
-        console.log(book.author_name)
-        if (book.cover_i) {
-          return <div key={book.key}> 
+      {(books.length > 0) && books.map((book,index) => {
+
+    <h1> Hello My DATA </h1>      
+                
+          return <div key={index}> 
 
             <h3>{(book.title.length > 23) ? book.title.slice(0, 23) : book.title}</h3> 
-            <p>{(book.author_name[0].length > 15) ? book.author_name[0].slice(0, 15) : book.author_name[0]}</p>
-            {book.cover_i && (
+            <p>{(book.author.length > 15) ? book.author.slice(0, 15) : book.author}</p>
+            
 
               <div className='imgbox'>
                 <img
-                  src={`https://covers.openlibrary.org/b/id/${book.cover_i}-L.jpg`}
+                  src={book.image}
                   alt={book.title}
                 />
               </div>
 
-            )}
+            
           </div>
 
-        }
-        return false
+        
+      
       })}
-
+ 
     </div>
   );
 }
