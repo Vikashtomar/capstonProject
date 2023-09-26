@@ -8,7 +8,7 @@ import Dashboard from "./Components/Dashboard/Dashboard";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
-  console.log("hello yr");
+   
   return (
     <div>
       <BrowserRouter>
