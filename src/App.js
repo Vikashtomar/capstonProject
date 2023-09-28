@@ -6,6 +6,7 @@ import About from "./Components/About/About";
 import Bookshelf from "./Components/BookshelfFolder/Bookshelf";
 import Dashboard from "./Components/Dashboard/Dashboard";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Register from "./Components/Header/Register/Register";
 
 function App() {
    
@@ -16,10 +17,10 @@ function App() {
         <Routes>
           
           <Route path="/login" element={<Login />}></Route>
+          <Route path="/register" element={<Register />}></Route>
           <Route path="/book" element={<Book />}></Route>
 
           <Route path="/dashboard" element={<Dashboard />}></Route>
-
         
          <Route path="/" element={<Bookshelf />}></Route>
          <Route path="/about" element={<About />}></Route>
